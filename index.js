@@ -50,9 +50,12 @@ let genSessionId = () => {
     return "sess" + counter
 }
 
-app.get("/sourcecode", (req, res) => {
+/*app.get("/sourcecode", (req, res) => {
 res.send(require('fs').readFileSync(__filename).toString())
-})
+})*/
+app.get("/sourcecode", (req, res) => {
+    res.send(require('fs').readFileSync(index.js).toString())
+    })
 
 /*app.listen(port, () => {
   console.log(`partOne.js app listening at http://localhost:${port}`)
