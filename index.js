@@ -122,6 +122,8 @@ app.post("/create-channel", (req, res) => {
 	}
     channel.set(parsedBody.channelName, sessId)
     channelUsers.set(parsedBody.channelName,[])
+    channelUsersBan.set(parsedBody.channelName,[])
+    channelMessages.set(parsedBody.channelName,[])
 	res.send(JSON.stringify({"success":true}))
 	
 	
@@ -402,7 +404,7 @@ app.post("/message", (req, res) => {
 	}
 
   
-	channelUsers.set(channelName,[{from:username, contents:cont}])
+	channelMessages.set(channelName,[{from:username, contents:cont}])
   //channelUsers.set("awesome-chatters", ["bob","bobr"])
 	res.send(JSON.stringify({"success":true}))
 	return
