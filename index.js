@@ -383,7 +383,7 @@ app.post("/message", (req, res) => {
 	let username = sessions.get(sessId)
 	let channelName = parsedBody.channelName
   let cont = parsedBody.contents
-  let expectedSess = channel.get(channelName)
+  //let expectedSess = channel.get(channelName)
   
 	
     if(sessId===undefined){
