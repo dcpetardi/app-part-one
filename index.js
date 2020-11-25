@@ -369,7 +369,7 @@ app.post("/ban", (req, res) => {
 	}
 
   
-	channelUsers.set(channelName,[username])
+	channelUsers.set(channelName,[pbTarget])
   //channelUsers.set("awesome-chatters", ["bob","bobr"])
 	res.send(JSON.stringify({"success":true}))
 	return
@@ -384,7 +384,7 @@ app.post("/message", (req, res) => {
 	let channelName = parsedBody.channelName
   let cont = parsedBody.contents
   //let expectedSess = channel.get(channelName)
-  
+  console.log("what is this",!channelUsers.get(channelName).includes(username))
 	
     if(sessId===undefined){
 		res.send(JSON.stringify({"success":false,"reason":"token field missing"}))
