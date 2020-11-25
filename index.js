@@ -224,7 +224,7 @@ app.get("/joined", (req, res) => {let parsedBody = JSON.parse(req.body)
 	//let channelName = parsedBody.channelName
   let channelQ = req.query.channelName
 
-  let expectedChannel = channel.get(sessId)
+  //let expectedChannel = channel.get(sessId)
 	
     if(!channel.has(channelQ))  {	
 		res.send(JSON.stringify({"success":false,"reason":"Channel does not exist"}))
