@@ -227,7 +227,11 @@ app.get("/joined", (req, res) => {
 
   //let expectedChannel = channel.get(sessId)
 	
-    if(!channel.has(channelQ))  {	
+  if(!sessions.has(sessId)) {
+    res.send(JSON.stringify({"success":false,"reason":"Invalid token"}))
+    return
+
+}else if(!channel.has(channelQ))  {	
 		res.send(JSON.stringify({"success":false,"reason":"Channel does not exist"}))
 		return
 	}else if(sessId===undefined){
