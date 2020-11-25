@@ -237,7 +237,7 @@ app.get("/joined", (req, res) => {let parsedBody = JSON.parse(req.body)
 		return
 	}
   let users = channelUsers.get(channelQ)
-	res.send(JSON.stringify({"success":true,"joined":users}))
+	res.send(JSON.stringify({"success":true,"joined":JSON.parse(users)}))
 	return
 	
 })
