@@ -17,32 +17,22 @@ const port = 4000
 
 
 let passwords = new Map()
-passwords.set("bob", "bob123")
-passwords.set("sue", "bob123")
-passwords.set("bobr", "bob123")
+
 
 let sessions = new Map()
-sessions.set("sessid100", "bob")
-sessions.set("sessid101", "sue")
-sessions.set("sessid102", "bobr")
+
 
 let channel = new Map()
-channel.set("awesome-chatters", "sessid100")
-channel.set("awesome-chatterss", "sessid101")
+
 
 let channelUsers = new Map()
-channelUsers.set("awesome-chatters", ["bob","bobr"])
-channelUsers.set("awesome-chatterss", ["sue"])
+
 
 let channelMessages = new Map()
-channelMessages.set("awesome-chatters", [
-  {from:"bob", contents:"Hello"},
-  {from:"bob", contents:"Hi"},
-  {from:"bob", contents:"Ciao"}
-])
+
 
 let channelUsersBan = new Map()
-channelUsersBan.set("awesome-chatters", ["sue", "bobr"])
+
 
 let counter = 144
 let genSessionId = () => {
@@ -50,12 +40,9 @@ let genSessionId = () => {
     return "sess" + counter
 }
 
-/*app.get("/sourcecode", (req, res) => {
-res.send(require('fs').readFileSync(__filename).toString())
-})*/
 app.get("/sourcecode", (req, res) => {
-    res.send(require('fs').readFileSync(index.js).toString())
-    })
+res.send(require('fs').readFileSync(__filename).toString())
+})
 
 /*app.listen(port, () => {
   console.log(`partOne.js app listening at http://localhost:${port}`)
