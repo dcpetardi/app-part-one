@@ -394,11 +394,11 @@ app.post("/message", (req, res) => {
 		res.send(JSON.stringify({"success":false,"reason":"Invalid token"}))
 		return
 	
-	}else if(!channelUsers.get(channelName).includes(username)){
-		res.send(JSON.stringify({"success":false,"reason":"User is not part of this channel"}))
-		return
 	}else if(!parsedBody.hasOwnProperty('channelName'))  {	
 		res.send(JSON.stringify({"success":false,"reason":"channelName field missing"}))
+		return
+	}else if(!channelUsers.get(channelName).includes(username)){
+		res.send(JSON.stringify({"success":false,"reason":"User is not part of this channel"}))
 		return
 	}else if(!parsedBody.hasOwnProperty('contents'))  {	
 		res.send(JSON.stringify({"success":false,"reason":"contents field missing"}))
@@ -432,14 +432,14 @@ app.get("/messages", (req, res) => {
    if(channelQ===undefined)  {	
 		res.send(JSON.stringify({"success":false,"reason":"channelName field missing"}))
 		return
+	}else if(channelQ===undefined)  {	
+		res.send(JSON.stringify({"success":false,"reason":"channelName field missing"}))
+		return
 	}else if(!channel.has(channelQ))  {	
 		res.send(JSON.stringify({"success":false,"reason":"Channel does not exist"}))
 		return
 	}else if(!channelUsers.get(channelQ).includes(username)){
 		res.send(JSON.stringify({"success":false,"reason":"User is not part of this channel"}))
-		return
-	}else if(channelQ===undefined)  {	
-		res.send(JSON.stringify({"success":false,"reason":"channelName field missing"}))
 		return
 	}
   var mess = channelMessages.get(channelQ) 
