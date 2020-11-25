@@ -252,7 +252,8 @@ app.post("/delete", (req, res) => {
   
   let parsedBody = JSON.parse(req.body)
   let sessId = req.headers.token
-	let username = sessions.get(sessId)
+   // let username = sessions.get(sessId)
+    //let username = sessions.get(sessId)
 	let channelName = parsedBody.channelName
   //channel.set("awesome-chatters", "sessid100")
 
@@ -278,7 +279,7 @@ app.post("/delete", (req, res) => {
 	
 	}
 
-  channelName.delete(channelName)
+  channel.delete(channelName)
   channelUsers.delete(channelName)
   channelMessages.delete(channelName)
   channelUsersBan.delete(channelName)
