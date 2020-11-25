@@ -397,6 +397,9 @@ app.post("/message", (req, res) => {
 	}else if(!parsedBody.hasOwnProperty('channelName'))  {	
 		res.send(JSON.stringify({"success":false,"reason":"channelName field missing"}))
 		return
+	}else if(!channelUsers.has(channelName)){
+		res.send(JSON.stringify({"success":false,"reason":"channel does not exist"}))
+		return
 	}else if(!channelUsers.get(channelName).includes(username)){
 		res.send(JSON.stringify({"success":false,"reason":"User is not part of this channel"}))
 		return
