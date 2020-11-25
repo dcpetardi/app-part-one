@@ -267,11 +267,11 @@ app.post("/delete", (req, res) => {
 		res.send(JSON.stringify({"success":false,"reason":"Invalid token"}))
 		return
 	
-	}else if(!channel.has(parsedBody.channelName))  {	
-		res.send(JSON.stringify({"success":false,"reason":"Channel does not exist"}))
-		return
 	}else if(!parsedBody.hasOwnProperty('channelName'))  {	
 		res.send(JSON.stringify({"success":false,"reason":"channelName field missing"}))
+		return
+	}else if(!channel.has(parsedBody.channelName))  {	
+		res.send(JSON.stringify({"success":false,"reason":"Channel does not exist"}))
 		return
 	}else if(expectedSess!==sessId) {
 		res.send(JSON.stringify({"success":false,"reason":"Invalid token"}))
