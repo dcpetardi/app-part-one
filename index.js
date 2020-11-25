@@ -83,17 +83,17 @@ app.post("/login", (req, res) => {
         res.send(JSON.stringify({success: true, token: sessId}))
         return
 		
-    }else if(!passwords.has(parsedBody.username)) {
-		res.send(JSON.stringify({"success":false,"reason":"User does not exist"}))
-		return
-	
-	}else if(!parsedBody.hasOwnProperty('password')) {
+    }else if(!parsedBody.hasOwnProperty('password')) {
 		res.send(JSON.stringify({"success":false,"reason":"password field missing"}))
 		return
 	
 	}else if(!parsedBody.hasOwnProperty('username'))  {	
 		res.send(JSON.stringify({"success":false,"reason":"username field missing"}))
 		return
+	}else if(!passwords.has(parsedBody.username)) {
+		res.send(JSON.stringify({"success":false,"reason":"User does not exist"}))
+		return
+	
 	}
 	res.send(JSON.stringify({"success":false,"reason":"Invalid password"}))
 })
