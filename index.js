@@ -218,7 +218,8 @@ let users = channelUsers.get(channelName)
 	
 })
 
-app.get("/joined", (req, res) => {let parsedBody = JSON.parse(req.body)
+app.get("/joined", (req, res) => {
+    //let parsedBody = JSON.parse(req.body)
   let sessId = req.headers.token
 	let username = sessions.get(sessId)
 	//let channelName = parsedBody.channelName
@@ -237,7 +238,7 @@ app.get("/joined", (req, res) => {let parsedBody = JSON.parse(req.body)
 		return
 	}
   let users = channelUsers.get(channelQ)
-	res.send(JSON.stringify({"success":true,"joined":JSON.parse(users)}))
+	res.send(JSON.stringify({"success":true,"joined":users}))
 	return
 	
 })
