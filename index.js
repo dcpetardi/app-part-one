@@ -77,13 +77,7 @@ app.post("/login", (req, res) => {
     let expectedPassword = passwords.get(usr)
 	//let expectedUN = passwords.get(actualPassword)
 
-    if (actualPassword === expectedPassword) {
-        let sessId = genSessionId()
-        sessions.set(sessId, usr)
-        res.send(JSON.stringify({success: true, token: sessId}))
-        return
-		
-    }else if(!parsedBody.hasOwnProperty('password')) {
+    if(!parsedBody.hasOwnProperty('password')) {
 		res.send(JSON.stringify({"success":false,"reason":"password field missing"}))
 		return
 	
@@ -94,7 +88,13 @@ app.post("/login", (req, res) => {
 		res.send(JSON.stringify({"success":false,"reason":"User does not exist"}))
 		return
 	
-	}
+	}else if (actualPassword === expectedPassword) {
+        let sessId = genSessionId()
+        sessions.set(sessId, usr)
+        res.send(JSON.stringify({success: true, token: sessId}))
+        return
+		
+    }
 	res.send(JSON.stringify({"success":false,"reason":"Invalid password"}))
 })
 
