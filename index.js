@@ -363,7 +363,7 @@ app.post("/ban", (req, res) => {
 		return
 	
 	}else if(channelUsersBan.has(channelName)){
-    channelUsersBan.get(channelName).push(username)
+    channelUsersBan.get(channelName).push(pbTarget)
 		res.send(JSON.stringify({"success":true}))
 	return
 	}
