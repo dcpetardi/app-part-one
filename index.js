@@ -120,7 +120,8 @@ app.post("/create-channel", (req, res) => {
 		res.send(JSON.stringify({"success":false,"reason":"Channel already exists"}))
 		return
 	}
-	channel.set(parsedBody.channelName, sessId)
+    channel.set(parsedBody.channelName, sessId)
+    channelUsers.set(parsedBody.channelName,[])
 	res.send(JSON.stringify({"success":true}))
 	
 	
