@@ -384,7 +384,7 @@ app.post("/message", (req, res) => {
 	let channelName = parsedBody.channelName
   let cont = parsedBody.contents
   //let expectedSess = channel.get(channelName)
-  console.log("what is this",!channelUsers.get(channelName).includes(username))
+  //console.log("what is this",!channelUsers.get(channelName).includes(username))
 	
     if(sessId===undefined){
 		res.send(JSON.stringify({"success":false,"reason":"token field missing"}))
@@ -394,11 +394,11 @@ app.post("/message", (req, res) => {
 		res.send(JSON.stringify({"success":false,"reason":"Invalid token"}))
 		return
 	
-	}else if(!parsedBody.hasOwnProperty('channelName'))  {	
-		res.send(JSON.stringify({"success":false,"reason":"channelName field missing"}))
-		return
 	}else if(!channelUsers.has(channelName)){
 		res.send(JSON.stringify({"success":false,"reason":"channel does not exist"}))
+		return
+	}else if(!parsedBody.hasOwnProperty('channelName'))  {	
+		res.send(JSON.stringify({"success":false,"reason":"channelName field missing"}))
 		return
 	}else if(!channelUsers.get(channelName).includes(username)){
 		res.send(JSON.stringify({"success":false,"reason":"User is not part of this channel"}))
