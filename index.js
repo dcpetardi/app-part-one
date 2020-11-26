@@ -385,6 +385,13 @@ app.post("/message", (req, res) => {
   let cont = parsedBody.contents
   //let expectedSess = channel.get(channelName)
   //console.log("what is this",!channelUsers.get(channelName).includes(username))
+
+  console.log("parsedBody",parsedBody)
+  console.log("sessId",sessId)
+  console.log("username",username)
+  console.log("channelName",channelName)
+  console.log("cont",cont)
+  console.log("what is this",!channelUsers.get(channelName).includes(username))
 	
     if(sessId===undefined){
 		res.send(JSON.stringify({"success":false,"reason":"token field missing"}))
