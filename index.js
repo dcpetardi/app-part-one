@@ -416,7 +416,7 @@ app.post("/message", (req, res) => {
 	}else if(!channel.has(channelName)){
 		res.send(JSON.stringify({"success":false,"reason":"channel does not exist"}))
 		return
-	}else if(!arr.includes(username.toString)||arr ===undefined){
+	}else if(!arr.includes(username.toString)||arr.length >0){
 		res.send(JSON.stringify({"success":false,"reason":"User is not part of this channel"}))
 		return
 	}else if(channelMessages.has(channelName)){
