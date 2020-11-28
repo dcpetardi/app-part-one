@@ -416,14 +416,15 @@ app.post("/message", (req, res) => {
 		res.send(JSON.stringify({"success":false,"reason":"contents field missing"}))
 		return
     }
-
+    var yes;
     if(channel.has(parsedBody.channelName)){
-    var yes = false;
+    yes = false;
     for(i=0; i <arr.length; i++){
       if(username === arr[i]){
           yes = true;
       }
   }
+}
   if(!channel.has(parsedBody.channelName)){
     res.send(JSON.stringify({"success":false,"reason":"channel does not exist"}))
     return
@@ -432,7 +433,7 @@ app.post("/message", (req, res) => {
 		res.send(JSON.stringify({"success":false,"reason":"User is not part of this channel"}))
 		return
     }
-}
+
     
     
 
