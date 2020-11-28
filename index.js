@@ -406,14 +406,14 @@ app.post("/message", (req, res) => {
 	}else if(!parsedBody.hasOwnProperty('channelName'))  {	
 		res.send(JSON.stringify({"success":false,"reason":"channelName field missing"}))
 		return
-    }else if(!channel.has(channelName)){
+    }else if(!arr.includes(username)){
+		res.send(JSON.stringify({"success":false,"reason":"User is not part of this channel"}))
+		return
+	}else if(!channel.has(channelName)){
 		res.send(JSON.stringify({"success":false,"reason":"channel does not exist"}))
 		return
 	}else if(!parsedBody.hasOwnProperty('contents'))  {	
 		res.send(JSON.stringify({"success":false,"reason":"contents field missing"}))
-		return
-	}else if(!arr.includes(username)){
-		res.send(JSON.stringify({"success":false,"reason":"User is not part of this channel"}))
 		return
 	}else if(channelMessages.has(channelName)){
     channelMessages.get(channelName).push({from:username, contents:cont})
