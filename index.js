@@ -413,7 +413,7 @@ app.post("/message", (req, res) => {
     }else if(!parsedBody.hasOwnProperty('contents'))  {	
 		res.send(JSON.stringify({"success":false,"reason":"contents field missing"}))
 		return
-	}else if(!channel.has(channelName)){
+	}else if(!channel.has(parsedBody.channelName)){
 		res.send(JSON.stringify({"success":false,"reason":"channel does not exist"}))
 		return
     }
@@ -430,14 +430,14 @@ app.post("/message", (req, res) => {
     if(yes===false){
 		res.send(JSON.stringify({"success":false,"reason":"User is not part of this channel"}))
 		return
-	}else if(channelMessages.has(channelName)){
-    channelMessages.get(channelName).push({from:username, contents:cont})
+	}else if(channelMessages.has(parsedBody.channelName)){
+    channelMessages.get(parsedBody.channelName).push({from:username, contents:cont})
 		res.send(JSON.stringify({"success":true}))
 	return
 	}
 
   
-	channelMessages.set(channelName,[{from:username, contents:cont}])
+	channelMessages.set(parsedBody.channelName,[{from:username, contents:cont}])
   //channelUsers.set("awesome-chatters", ["bob","bobr"])
 	res.send(JSON.stringify({"success":true}))
 	return
