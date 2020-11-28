@@ -418,10 +418,10 @@ app.post("/message", (req, res) => {
 		return
     }
     
-    var arrL = arr.length;
+   
     var yes = false;
-    for(i=0; i <arrL; i++){
-        if(username === arrL[i]){
+    for(i=0; i <arr.length; i++){
+        if(username === arr[i]){
             yes = true;
         }
     }
