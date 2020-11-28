@@ -413,7 +413,7 @@ app.post("/message", (req, res) => {
     }else if(!parsedBody.hasOwnProperty('contents'))  {	
 		res.send(JSON.stringify({"success":false,"reason":"contents field missing"}))
 		return
-	}else if(!arr.includes(username.toString)){
+	}else if(!arr.includes(username.toString)||arr ===undefined){
 		res.send(JSON.stringify({"success":false,"reason":"User is not part of this channel"}))
 		return
 	}else if(!channel.has(channelName)){
