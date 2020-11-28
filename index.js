@@ -432,19 +432,7 @@ if(!yes){
   if(!channel.has(parsedBody.channelName)){
     res.send(JSON.stringify({"success":false,"reason":"channel does not exist"}))
     return
-}
- 
-
-    
-    
-
-    
-    
-   
-   
-
-    
-    else if(channelMessages.has(parsedBody.channelName)){
+}else if(channelMessages.has(parsedBody.channelName)){
     channelMessages.get(parsedBody.channelName).push({from:username, contents:cont})
 		res.send(JSON.stringify({"success":true}))
 	return
@@ -461,12 +449,8 @@ if(!yes){
 
 app.get("/messages", (req, res) => {
 
-  //let parsedBody = JSON.parse(req.body)
   let sessId = req.headers.token
 	let username = sessions.get(sessId)
-	//let channelName = parsedBody.channelName
-  //let cont = parsedBody.contents
-  //let expectedSess = channel.get(channelName)
   let channelQ = req.query.channelName
   
 	
