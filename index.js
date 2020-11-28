@@ -391,7 +391,7 @@ app.post("/message", (req, res) => {
   console.log("username",username)
   console.log("channelName",channelName)
   console.log("cont",cont)
-  console.log("what is this",!channelUsers.get(channelName).includes(username))
+  //console.log("what is this",!channelUsers.get(channelName).includes(username))
 	
     if(sessId===undefined){
 		res.send(JSON.stringify({"success":false,"reason":"token field missing"}))
