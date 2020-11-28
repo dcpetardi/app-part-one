@@ -415,9 +415,6 @@ app.post("/message", (req, res) => {
     }else if(!parsedBody.hasOwnProperty('contents'))  {	
 		res.send(JSON.stringify({"success":false,"reason":"contents field missing"}))
 		return
-    }else if(!channel.has(parsedBody.channelName)){
-		res.send(JSON.stringify({"success":false,"reason":"channel does not exist"}))
-		return
     }
 
     var yes = false;
@@ -430,7 +427,10 @@ app.post("/message", (req, res) => {
     if(yes===false){
 		res.send(JSON.stringify({"success":false,"reason":"User is not part of this channel"}))
 		return
-	}
+	}else if(!channel.has(parsedBody.channelName)){
+		res.send(JSON.stringify({"success":false,"reason":"channel does not exist"}))
+		return
+    }
 
     
     
