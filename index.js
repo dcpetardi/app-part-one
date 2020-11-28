@@ -425,14 +425,15 @@ app.post("/message", (req, res) => {
       }
   }
 }
+if(yes===false){
+    res.send(JSON.stringify({"success":false,"reason":"User is not part of this channel"}))
+    return
+}
   if(!channel.has(parsedBody.channelName)){
     res.send(JSON.stringify({"success":false,"reason":"channel does not exist"}))
     return
 }
-    if(yes===false){
-		res.send(JSON.stringify({"success":false,"reason":"User is not part of this channel"}))
-		return
-    }
+ 
 
     
     
