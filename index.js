@@ -388,6 +388,13 @@ app.post("/message", (req, res) => {
   //let expectedSess = channel.get(channelName)
   //console.log("what is this",!channelUsers.get(channelName).includes(username))
 
+  var yes = false;
+  for(i=0; i <arr.length; i++){
+      if(username === arr[i]){
+          yes = true;
+      }
+  }
+
   console.log("parsedBody",parsedBody)
   console.log("sessId",sessId)
   console.log("username",username)
@@ -413,24 +420,19 @@ app.post("/message", (req, res) => {
     }else if(!parsedBody.hasOwnProperty('contents'))  {	
 		res.send(JSON.stringify({"success":false,"reason":"contents field missing"}))
 		return
+	}else if(yes===false){
+		res.send(JSON.stringify({"success":false,"reason":"User is not part of this channel"}))
+		return
 	}else if(!channel.has(parsedBody.channelName)){
 		res.send(JSON.stringify({"success":false,"reason":"channel does not exist"}))
 		return
     }
     
    
-    var yes = false;
-    for(i=0; i <arr.length; i++){
-        if(username === arr[i]){
-            yes = true;
-        }
-    }
+   
 
     
-    if(yes===false){
-		res.send(JSON.stringify({"success":false,"reason":"User is not part of this channel"}))
-		return
-	}else if(channelMessages.has(parsedBody.channelName)){
+    else if(channelMessages.has(parsedBody.channelName)){
     channelMessages.get(parsedBody.channelName).push({from:username, contents:cont})
 		res.send(JSON.stringify({"success":true}))
 	return
